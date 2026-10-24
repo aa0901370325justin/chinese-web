@@ -1,0 +1,7 @@
+/* The dashboard defines a global two-column .hero. The materials module reuses that class,
+   so explicitly reset it here or headings/descriptions collapse into narrow columns. */
+.integrated-materials-app .hero{display:block!important;grid-template-columns:minmax(0,1fr)!important;width:100%;min-width:0;max-width:100%;}
+.integrated-materials-app .hero>.kicker,.integrated-materials-app .hero>h2,.integrated-materials-app .hero>p{display:block;width:100%;max-width:100%;grid-column:1/-1;overflow-wrap:anywhere;}
+.integrated-materials-app .hero>h2{line-height:1.3;}
+.integrated-materials-app .hero>p{line-height:1.75;}
+.integrated-materials-app .grid{width:100%;min-width:0;}

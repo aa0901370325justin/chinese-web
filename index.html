@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f5f1"><meta name="application-version" content="1.9.17"><meta name="color-scheme" content="light dark"><title>台灣華語 Taiwan Mandarin · 1.9.17 韻母音檔順序修正版</title>
 <link rel="stylesheet" href="./css/main.css">
-<meta name="theme-color" content="#f6f5f1"><meta name="application-version" content="1.9.6"><meta name="color-scheme" content="light dark"><title>台灣華語 Taiwan Mandarin · 1.9.6 筆順圖片與語言修正版</title>
+<link rel="stylesheet" href="./css/stroke-order.css">
 
 
-
+<link rel="stylesheet" href="./css/materials-layout.css">
 </head>
 <body><div class="app">
 <aside><div class="brand"><div class="brand-mark">文</div><div><strong data-i18n="brand">台灣華語</strong><small>TAIWAN MANDARIN</small></div></div>
@@ -310,15 +310,14 @@ Hi! Ask me about vocabulary, pinyin, tones, grammar, or sentence corrections.</d
 </section>
 </main></div><nav class="mobile-nav" id="mobileNav"><button class="active" data-page="home"><span>⌂</span><b data-i18n="nav_home">首頁</b></button><button data-page="lesson"><span>▤</span><b data-i18n="nav_lesson">課程</b></button><button data-page="curriculum"><span>▦</span><b data-i18n="curriculum_title">地圖</b></button><button data-page="learning"><span>◷</span><b data-i18n="learning_title">個人化學習</b></button><button data-page="vocab"><span>▧</span><b data-i18n="nav_vocab">單字</b></button><button data-page="flashcards"><span>▰</span><b data-i18n="menu_flashcards">記憶字卡 · Flashcards</b></button><button data-page="practice"><span>◉</span><b data-i18n="nav_practice">測驗</b></button><button data-page="settings"><span>⚙</span><b data-i18n="nav_settings">設定</b></button><button data-page="materials"><span>▣</span><span>教材</span></button></nav><div class="toast" id="toast"></div>
 
+<link rel="stylesheet" href="./css/materials.css">
+<script src="./js/media-manifest.js"></script>
+<script src="./js/materials-app.js"></script>
+<script src="./js/data/vocabulary-data.js"></script>
+<script src="./js/app.js"></script><script src="./js/moe-zhuyin-audio.js"></script>
 
-<script src="./js/modules/embedded-assets.js"></script>
-<script src="./js/modules/materials.js"></script>
-<script src="./js/data/vocabulary.js"></script>
-<script src="./js/app.js"></script><script src="./js/data/moe-zhuyin-audio.js"></script>
-<script src="./js/modules/moe-zhuyin-audio.js"></script>
-
-<script src="./js/modules/i18n-patch.js"></script>
-<script src="./js/modules/speaking-practice.js"></script>
+<script src="./js/materials-i18n.js"></script>
+<script src="./js/speaking-practice.js"></script>
 
 <script src="./js/data/stroke-order-ids.js"></script>
 <script src="./js/data/stroke-order-png-01.js"></script>
@@ -328,7 +327,15 @@ Hi! Ask me about vocabulary, pinyin, tones, grammar, or sentence corrections.</d
 <script src="./js/data/stroke-order-png-05.js"></script>
 <script src="./js/data/stroke-order-png-06.js"></script>
 <script src="./js/data/stroke-order-png-07.js"></script>
+<script src="./js/data/stroke-order-png-08.js"></script>
+<script src="./js/data/stroke-order-png-loader.js"></script>
 
-<script src="./js/modules/stroke-order.js"></script>
+<script src="./js/stroke-order-integration.js"></script>
 
+<script src="./js/i18n-repair.js"></script>
+
+
+
+
+<script src="./js/audio-i18n-fix.js"></script>
 </body></html>

@@ -1,0 +1,59 @@
+{
+  "source_file": "Taiwan_Mandarin_Learning_1.9.11_MOE_Animation_Larger_No_Offline_Diagram.html",
+  "source_bytes": 77617637,
+  "project_file_count_excluding_machine_report": 61,
+  "project_bytes_excluding_machine_report": 65143014,
+  "vocabulary_records": 2960,
+  "moe_audio_clip_count": 37,
+  "stroke_order_id_count": 6063,
+  "stroke_order_png_count": 6063,
+  "stroke_order_png_chunk_count": 7,
+  "browser_interaction_test": "not verified: Chromium navigation blocked by ERR_BLOCKED_BY_ADMINISTRATOR",
+  "static_checks": "passed: JS syntax, HTML parse, local references, data counts, media signatures",
+  "media_sha256": {
+    "assets/manuals/phonetic-symbols-manual.pdf": "b2bdd389977577e5c225417648fd7bde835a70e83446b0dca3bad2adbf8da9bd",
+    "assets/videos/tone-practice.mp4": "2abebf72549761af234ee6b6a4426147739c4a02dbc4fdb518c63db86970d8b5"
+  },
+  "largest_files": [
+    {
+      "path": "assets/videos/tone-practice.mp4",
+      "bytes": 22843191
+    },
+    {
+      "path": "assets/manuals/phonetic-symbols-manual.pdf",
+      "bytes": 9190618
+    },
+    {
+      "path": "js/data/vocabulary.js",
+      "bytes": 3605301
+    },
+    {
+      "path": "js/data/stroke-order-png-05.js",
+      "bytes": 3499576
+    },
+    {
+      "path": "js/data/stroke-order-png-03.js",
+      "bytes": 3498653
+    },
+    {
+      "path": "js/data/stroke-order-png-02.js",
+      "bytes": 3498501
+    },
+    {
+      "path": "js/data/stroke-order-png-01.js",
+      "bytes": 3497667
+    },
+    {
+      "path": "js/data/stroke-order-png-04.js",
+      "bytes": 3495031
+    },
+    {
+      "path": "js/data/stroke-order-png-06.js",
+      "bytes": 3493062
+    },
+    {
+      "path": "js/data/stroke-order-png-07.js",
+      "bytes": 2551104
+    }
+  ]
+}

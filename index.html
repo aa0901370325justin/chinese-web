@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="./css/main.css">
+<meta name="theme-color" content="#f6f5f1"><meta name="application-version" content="1.9.6"><meta name="color-scheme" content="light dark"><title>台灣華語 Taiwan Mandarin · 1.9.6 筆順圖片與語言修正版</title>
+
+
+
+</head>
+<body><div class="app">
+<aside><div class="brand"><div class="brand-mark">文</div><div><strong data-i18n="brand">台灣華語</strong><small>TAIWAN MANDARIN</small></div></div>
+<div><div class="nav-label" data-i18n="nav_learn">LEARN</div><nav class="nav" id="sideNav"><button class="active" data-page="home"><span class="ico">⌂</span><span data-i18n="nav_home">學習首頁</span></button><button data-page="lesson"><span class="ico">▤</span><span data-i18n="nav_lesson">今日課程</span></button><button data-page="curriculum"><span class="ico">▦</span><span data-i18n="curriculum_title">課程地圖</span></button><button data-page="learning"><span class="ico">◷</span><span data-i18n="learning_title">個人化學習</span></button><button data-page="zhuyin"><span class="ico">ㄅ</span><span data-i18n="zhuyin_nav">注音教學</span></button><button data-page="materials"><span class="ico">▣</span><span data-i18n="materials_nav">注音手冊／影音</span></button><button data-page="vocab"><span class="ico">▧</span><span data-i18n="nav_vocab">單字庫</span></button><button data-page="flashcards"><span class="ico">▰</span><span data-i18n="menu_flashcards">記憶字卡</span></button><button data-page="practice"><span class="ico">◉</span><span data-i18n="nav_practice">快速測驗</span></button><button data-page="review"><span class="ico">↻</span><span data-i18n="nav_review">錯題與複習</span></button>
+<button data-page="reading"><span class="ico">▧</span><span data-i18n="menu_reading">閱讀</span></button>
+<button data-page="grammar"><span class="ico">文</span><span data-i18n="menu_grammar">文法</span></button>
+<button data-page="listening"><span class="ico">♫</span><span data-i18n="menu_listening">聽力</span></button>
+<button data-page="speaking"><span class="ico">◖</span><span data-i18n="menu_speaking">口說</span></button>
+<button data-page="writing"><span class="ico">✎</span><span data-i18n="menu_writing">寫作</span></button>
+<button data-page="strokeorder"><span class="ico">✍</span><span>國字筆順</span></button>
+<button data-page="exam"><span class="ico">▣</span><span data-i18n="menu_exam">綜合測驗</span></button><button data-page="tutor"><span class="ico">✦</span><span data-i18n="nav_tutor">AI 華語家教</span></button></nav></div>
+<div><div class="nav-label" data-i18n="nav_progress">YOUR PROGRESS</div><nav class="nav"><button data-page="progress"><span class="ico">▥</span><span data-i18n="nav_progress_page">學習紀錄</span></button><button data-page="settings"><span class="ico">⚙</span><span data-i18n="nav_settings">設定與備份</span></button></nav></div>
+</aside>
+<main><header class="topbar"><div><div class="eyebrow" data-i18n="eyebrow">YOUR TAIWAN MANDARIN JOURNEY</div><h1 id="pageTitle" data-i18n="welcome_title" class="langline">準備好開始今天的學習了嗎？</h1></div><div class="top-actions"><select id="uiLanguage" class="select-chip" aria-label="Interface language"><option value="zh">繁體中文</option><option value="en">English</option><option value="bi">中文 / English</option></select><div class="avatar" id="avatar">學</div></div></header>
+<section class="view active" id="view-home"><div class="hero"><div class="hero-main"><div class="eyebrow" data-i18n="hero_kicker">SMALL STEPS, REAL CONVERSATIONS</div><h2 data-i18n="hero_title">用台灣華語，<br>開始你的下一段旅程。</h2><p data-i18n="hero_desc">從最實用的日常用語開始。學一點、說一點，讓每一次練習都更接近真實生活。</p><button class="btn btn-light" onclick="startLesson()"><span data-i18n="start_learning">開始今日課程</span> <span>↗</span></button></div><div class="daily-card"><div class="card-heading"><h3 data-i18n="goal_today">今日學習目標</h3><span class="tag" data-i18n="daily">DAILY</span></div><div><div class="goal-num"><strong id="goalMinutes">0</strong><span data-i18n="minutes_today">分鐘 / 10 分鐘</span></div><div class="bar"><span id="goalBar"></span></div><div class="goal-footer"><span data-i18n="keep_going">每天持續練習</span><span id="goalPercent">0%</span></div></div><button class="btn btn-soft" onclick="go('progress')" data-i18n="view_progress">查看學習紀錄 →</button></div></div>
+<div class="stats-grid"><div class="stat card"><div class="stat-top"><span data-i18n="stat_words">學過的單字</span><span class="stat-icon">▧</span></div><strong id="statWords">0</strong><small data-i18n="stat_words_sub">開始累積你的詞彙</small></div><div class="stat card"><div class="stat-top"><span data-i18n="stat_mastered">已熟悉</span><span class="stat-icon">✓</span></div><strong id="statMastered">0</strong><small data-i18n="stat_mastered_sub">答對並持續複習</small></div><div class="stat card"><div class="stat-top"><span data-i18n="stat_accuracy">測驗正確率</span><span class="stat-icon">◎</span></div><strong id="statAccuracy">—</strong><small data-i18n="stat_accuracy_sub">完成測驗後更新</small></div><div class="stat card"><div class="stat-top"><span data-i18n="stat_streak">連續學習</span><span class="stat-icon">✦</span></div><strong id="statStreak">0</strong><small data-i18n="stat_streak_sub">學習日數</small></div></div>
+<div class="section-head"><h2 data-i18n="path_title">從這裡開始</h2><button class="text-link" onclick="go('lesson')" data-i18n="all_lessons">所有課程 →</button></div><div class="lesson-grid" id="homeLessons"></div>
+<div class="section-head"><h2 data-i18n="quick_review">快速複習</h2><button class="text-link" onclick="go('review')" data-i18n="see_review">查看複習 →</button></div><div class="card" id="homeReview"></div>
+<div class="card module-shortcuts" style="padding:22px;margin-top:18px">
+  <div class="card-heading"><h3 data-i18n="studio_title">完整學習工具</h3><span class="pill">1.0.2</span></div>
+  <p class="muted tiny" style="line-height:1.7"><span data-i18n="studio_desc">從單字延伸到閱讀、文法、聽力、口說、寫作與綜合測驗。</span></p>
+  <div class="module-grid">
+    <button class="module-tile" onclick="go('reading')"><b data-i18n="tile_reading_title">▧ 閱讀</b><small data-i18n="tile_reading_desc">短文與理解題</small></button>
+    <button class="module-tile" onclick="go('grammar')"><b data-i18n="tile_grammar_title">文 文法</b><small data-i18n="tile_grammar_desc">句型規則與練習</small></button>
+    <button class="module-tile" onclick="go('listening')"><b data-i18n="tile_listening_title">♫ 聽力</b><small data-i18n="tile_listening_desc">播放與辨識句子</small></button>
+    <button class="module-tile" onclick="go('speaking')"><b data-i18n="tile_speaking_title">◖ 口說</b><small data-i18n="tile_speaking_desc">跟讀與語音支援檢查</small></button>
+    <button class="module-tile" onclick="go('writing')"><b data-i18n="tile_writing_title">✎ 寫作</b><small data-i18n="tile_writing_desc">從英文提示組成華語</small></button>
+    <button class="module-tile" onclick="go('exam')"><b data-i18n="tile_exam_title">▣ 綜合測驗</b><small data-i18n="tile_exam_desc">跨技能題庫</small></button>
+  </div>
+</div>
+</section>
+<section class="view" id="view-curriculum">
+  <div class="page-intro"><div><div class="eyebrow" data-i18n="curriculum_eyebrow">CURRICULUM MAP · 課程地圖</div><h2 data-i18n="curriculum_heading">從詞彙走向真實溝通</h2><p data-i18n="curriculum_desc">以現有 Excel 詞庫建立分階段、分情境的課程單元。可從任一主題開始，所有單元都會連結到同一份詞庫。</p></div><span class="tag" data-i18n="curriculum_version">1.7 · 個人化學習引擎</span></div>
+  <div class="curriculum-banner">
+    <div class="card">
+      <div class="card-heading"><h3 data-i18n="curriculum_stages">學習階段</h3><span class="pill" data-i18n="curriculum_stage_count">8 個內部階段</span></div>
+      <p class="muted tiny" data-i18n="curriculum_stage_note" style="line-height:1.75;margin:10px 0 0">階段用於安排本平台的建議學習順序，參考詞條的教學難度、學習優先度與實用度，不等同 TOCFL 或其他官方檢定級別。</p>
+      <div class="curriculum-stages" id="curriculumStages"></div>
+    </div>
+    <div class="card">
+      <div class="card-heading"><h3 data-i18n="curriculum_progress">你的課程進度</h3><button class="btn btn-green" onclick="startDailyPlan()"><span data-i18n="curriculum_start_daily">開始今日學習計畫</span> ↗</button></div>
+      <div class="curriculum-kpis">
+        <div class="curriculum-kpi"><strong id="curriculumWordCount">2,960</strong><span data-i18n="curriculum_words_count">整合詞條</span></div>
+        <div class="curriculum-kpi"><strong id="curriculumUnitCount">—</strong><span data-i18n="curriculum_units_count">課程單元</span></div>
+        <div class="curriculum-kpi"><strong id="curriculumCompletedCount">0</strong><span data-i18n="curriculum_completed_units">已完成單元</span></div>
+        <div class="curriculum-kpi"><strong id="curriculumLearnedCount">0</strong><span data-i18n="curriculum_learned_words">已接觸詞條</span></div>
+      </div>
+      <div class="curriculum-notice" data-i18n="curriculum_storage_note">單元完成紀錄、詞條練習次數與複習排程保存在目前瀏覽器。建議定期使用「設定與備份」匯出資料。</div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:16px">
+    <div class="card-heading"><div><h3 id="curriculumSelectedTitle" data-i18n="curriculum_selected_default">準備起步</h3><p id="curriculumSelectedGoal" class="muted tiny" style="margin:6px 0 0;line-height:1.7"></p></div><span class="tag" id="curriculumSelectedCount" data-i18n="curriculum_unit_singular">個單元</span></div>
+    <div class="curriculum-filters">
+      <label for="curriculumTopic"><span data-i18n="curriculum_topic_label">情境分類</span><select id="curriculumTopic" class="field"><option value="all">全部 12 類情境</option></select></label>
+      <label for="curriculumSearch"><span data-i18n="curriculum_search_label">搜尋課程或詞彙</span><input id="curriculumSearch" class="field" type="search" data-i18n-placeholder="curriculum_search_placeholder" placeholder="輸入中文、拼音或英文…"></label>
+      <button class="btn btn-line" onclick="clearCurriculumFilters()" data-i18n="curriculum_clear_search">清除搜尋</button>
+    </div>
+    <div class="curriculum-unit-grid" id="curriculumUnits"></div>
+    <p class="muted tiny" id="curriculumResultsNote" style="margin:14px 0 0"></p>
+  </div>
+</section>
+<section class="view" id="view-lesson"><div class="page-intro"><div><div class="eyebrow" data-i18n="course_label">BEGINNER COURSE · UNIT 01</div><h2 data-i18n="lesson_page_title" id="lessonPageHeading">你好！初次見面</h2><p data-i18n="lesson_page_desc" id="lessonPageDesc">學會打招呼、說謝謝，開啟你的第一段華語對話。</p></div><span class="tag" data-i18n="beginner" id="lessonStageBadge">初級入門</span></div><div class="lesson-layout"><div class="card lesson-panel"><div class="card-heading"><span class="lesson-kicker" id="lessonStepLabel">WORD 1 OF 8</span><span class="pill" id="lessonTopic">Greetings</span></div><div class="step-line"><span id="lessonStepBar" style="width:12.5%"></span></div><div id="lessonWord"></div><div class="lesson-controls"><button class="btn btn-line" id="prevWord" onclick="stepLesson(-1)">← <span data-i18n="previous">上一個</span></button><button class="btn btn-green" id="nextWord" onclick="stepLesson(1)"><span data-i18n="next_word">下一個單字</span> →</button></div></div><div class="lesson-sidebar"><div class="card"><div class="card-heading"><h3 data-i18n="lesson_contents">本課內容</h3><span class="muted tiny" id="lessonContentsCount">8</span></div><div class="side-list" id="lessonSideList"></div></div><div class="card" style="margin-top:14px"><b style="font-size:12px" data-i18n="learning_tip">學習小提示</b><p class="muted tiny" style="line-height:1.7" data-i18n="tone_tip">先聽整個詞的節奏，再留意每個字的聲調。不用一次就追求完美。</p></div></div></div></section>
+
+<section class="view" id="view-learning">
+  <div class="page-intro"><div><div class="eyebrow" data-i18n="learning_eyebrow">PERSONALIZED LEARNING · 1.7</div><h2 data-i18n="learning_heading">你的每日華語訓練</h2><p data-i18n="learning_desc">依照複習負擔安排新詞，詞彙、聽力與口說各 20 分鐘。只有計時中的實際練習會新增學習時間。</p></div><span class="tag" data-i18n="learning_daily_goal_tag">每日目標 · 60 分鐘</span></div>
+  <div class="learning-overview">
+    <div class="learning-kpi"><span class="muted tiny" data-i18n="learning_today_time">今日實際學習</span><strong id="learningTodayTime">0 / 60</strong><small data-i18n="learning_minutes_unit">分鐘</small></div>
+    <div class="learning-kpi"><span class="muted tiny" data-i18n="learning_due_words">到期複習詞</span><strong id="learningDueCount">0</strong><small data-i18n="learning_due_sub">優先安排複習</small></div>
+    <div class="learning-kpi"><span class="muted tiny" data-i18n="learning_new_target">今日建議新詞</span><strong id="learningNewTarget">13</strong><small data-i18n="learning_new_target_sub">依剩餘時間動態計算</small></div>
+    <div class="learning-kpi"><span class="muted tiny" data-i18n="learning_active_session">目前計時</span><strong id="learningActiveLabel">—</strong><small id="learningActiveDetail" data-i18n="learning_no_active">尚未開始計時</small></div>
+  </div>
+  <div class="learning-block-grid">
+    <div class="card learning-block" id="learningBlock-vocab">
+      <div class="learning-block-head"><div><h3><span>▤</span> <span data-i18n="learning_vocab">詞彙學習與複習</span></h3><div class="learning-time-label" data-i18n="learning_block_goal">目標 20 分鐘</div></div><div class="learning-timer" id="learningTimer-vocab">00:00</div></div>
+      <div class="learning-progress"><span id="learningProgress-vocab"></span></div><div class="learning-session-controls" id="learningControls-vocab"></div><div class="learning-task" id="learningTask-vocab"></div>
+      <p class="learning-note" data-i18n="learning_vocab_note">先處理到期詞，再安排新詞。Again / Hard / Good / Easy 會分別影響下一次複習日期。</p>
+    </div>
+    <div class="card learning-block" id="learningBlock-listening">
+      <div class="learning-block-head"><div><h3><span>♫</span> <span data-i18n="learning_listening">聽力訓練</span></h3><div class="learning-time-label" data-i18n="learning_block_goal">目標 20 分鐘</div></div><div class="learning-timer" id="learningTimer-listening">00:00</div></div>
+      <div class="learning-progress"><span id="learningProgress-listening"></span></div><div class="learning-session-controls" id="learningControls-listening"></div><div class="learning-task" id="learningTask-listening"></div>
+      <p class="learning-note" data-i18n="learning_listening_note">先聽語音，再自評理解程度。這是自我評估，不代表自動測得你的實際聽力水準。</p>
+    </div>
+    <div class="card learning-block" id="learningBlock-speaking">
+      <div class="learning-block-head"><div><h3><span>◖</span> <span data-i18n="learning_speaking">口說訓練</span></h3><div class="learning-time-label" data-i18n="learning_block_goal">目標 20 分鐘</div></div><div class="learning-timer" id="learningTimer-speaking">00:00</div></div>
+      <div class="learning-progress"><span id="learningProgress-speaking"></span></div><div class="learning-session-controls" id="learningControls-speaking"></div><div class="learning-task" id="learningTask-speaking"></div>
+      <p class="learning-note" data-i18n="learning_speaking_note">可播放範例後跟讀，再自評是否能自然說出。瀏覽器語音辨識不等同聲調或發音評分。</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px"><div class="card-heading"><h3 data-i18n="learning_review_status">你的掌握度與複習概況</h3><span class="pill" data-i18n="learning_skill_independent">各技能獨立排程</span></div><div id="learningReviewSummary" class="learning-plan-list"></div><div class="learning-qa-note" data-i18n="learning_data_note">本機資料會分開保存詞彙、聽力、口說的掌握紀錄、複習日期與實際計時。舊版已存在的詞庫與成績不會被重置；歷史資料中原先估算的分鐘數也不會被當成精確計時。</div></div>
+</section>
+
+<section class="view" id="view-zhuyin">
+  <div class="page-intro"><div><div class="eyebrow" data-i18n="zhuyin_eyebrow">BOPOMOFO · ZHUYIN</div><h2 data-i18n="zhuyin_title">注音教學</h2><p data-i18n="zhuyin_desc">從聲母、韻母、聲調到拼讀，循序練習台灣華語注音。每個例字都可以播放發音。</p></div><button class="btn btn-green" type="button" onclick="testZhuyinAudio('媽')" data-i18n="zhuyin_test_voice">試聽例字發音</button></div>
+  <div class="card extra-card">
+    <div class="card-heading"><h3 data-i18n="zhuyin_steps_title">學習順序</h3><span class="pill">4 STEPS</span></div>
+    <div class="zhuyin-steps"><div class="zhuyin-step"><b>1</b><span data-i18n="zhuyin_step_initial">聲母：音節開頭的子音</span></div><div class="zhuyin-step"><b>2</b><span data-i18n="zhuyin_step_final">韻母：音節中的主要母音與韻尾</span></div><div class="zhuyin-step"><b>3</b><span data-i18n="zhuyin_step_tone">聲調：音高變化會改變詞義</span></div><div class="zhuyin-step"><b>4</b><span data-i18n="zhuyin_step_blend">拼讀：聲母＋韻母＋聲調</span></div></div>
+  </div>
+  <div class="card extra-card"><div class="card-heading"><h3 data-i18n="zhuyin_initials_title">聲母 · 21 個常用聲母</h3><span class="pill" data-i18n="zhuyin_playable">點例字聽發音</span></div><p class="muted tiny" data-i18n="zhuyin_initials_desc">拼音欄用來對照，不代表英語字母能完全表達中文發音。請點例字聆聽整個音節。</p><div id="zhuyinInitialGrid" class="zhuyin-grid"></div></div>
+  <div class="card extra-card"><div class="card-heading"><h3 data-i18n="zhuyin_finals_title">韻母 · 16 個主要韻母</h3><span class="pill" data-i18n="zhuyin_playable">點例字聽發音</span></div><p class="muted tiny" data-i18n="zhuyin_finals_desc">部分韻母會和聲母組合，單獨出現的讀法可能需要以例字學習。</p><div id="zhuyinFinalsGrid" class="zhuyin-grid"></div></div>
+  <div class="card extra-card"><div class="card-heading"><h3 data-i18n="zhuyin_tones_title">四聲與輕聲</h3><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="pill" data-i18n="zhuyin_tones_count">5 種聲調示例</span><button type="button" class="btn btn-line" onclick="playToneSequence()">▶ 連續播放五聲調</button></div></div><p class="muted tiny" data-i18n="zhuyin_tones_desc">先聽例字，再模仿音高走向。可連續播放五個例字比較聲調；此功能使用裝置的繁體中文語音，並非教育部錄音合成檔。第一聲通常不標調號；輕聲符號在橫式注音中放在音節前方。</p><div id="zhuyinToneGrid" class="zhuyin-tone-grid"></div></div>
+  <div class="card extra-card"><div class="card-heading"><h3 data-i18n="zhuyin_blend_title">拼讀練習</h3><span class="pill" id="zhuyinScore">0 / 0</span></div><p class="muted tiny" data-i18n="zhuyin_blend_desc">先看漢字找出對應注音，也可以切換成看注音找漢字。答題紀錄會保存在目前瀏覽器。</p><div class="filters" style="margin-bottom:14px"><label class="tiny" for="zhuyinQuizMode" data-i18n="zhuyin_quiz_mode_label">練習方向</label><select id="zhuyinQuizMode" class="field" onchange="renderZhuyinQuiz()"><option value="charToSymbol" data-i18n="zhuyin_mode_char_symbol">看漢字選注音</option><option value="symbolToChar" data-i18n="zhuyin_mode_symbol_char">看注音選漢字</option></select><button type="button" class="btn btn-line" onclick="testCurrentZhuyinWord()" data-i18n="zhuyin_listen_question">聽題目例字</button></div><div id="zhuyinQuiz" class="zhuyin-quiz" aria-live="polite"></div></div>
+  <div class="card extra-card"><div class="card-heading"><h3 data-i18n="zhuyin_voice_help_title">發音不自然時怎麼辦？</h3><span>🔊</span></div><p class="muted" data-i18n="zhuyin_voice_help">例句播放使用這台裝置提供的語音。請到「設定與備份」選擇語音並按「測試語音」；若沒有台灣中文語音，可在 Windows 的語音設定中安裝「中文（繁體，台灣）」語音，再重新開啟瀏覽器。不同系統的合成語音品質不同，網頁無法把低品質系統語音直接變成真人錄音。</p></div>
+</section>
+<section class="view" id="view-vocab"><div class="page-intro"><div><div class="eyebrow" data-i18n="vocab_label">YOUR PERSONAL WORD BANK</div><h2 data-i18n="vocab_title">單字庫</h2><p data-i18n="vocab_desc">搜尋繁體中文字、拼音或英文意思，隨時複習。</p></div><span class="tag" id="vocabCount">2,960 WORDS</span></div><div class="card" style="margin-bottom:16px"><div class="card-heading"><div><b data-i18n="vocab_merged_title">Excel 詞庫已整合 · 2,960 個不重複詞條</b><p class="muted tiny" data-i18n="vocab_merged_desc" style="margin:6px 0 0">資料完整保留來源工作表的 19 個欄位，依 12 個情境分類瀏覽。每張詞卡都可展開查看全部欄位、核對狀態、詞頻、優先度、例句、備註與來源網址。</p></div><span class="tag" data-i18n="vocab_field_counts">2,960 詞條 · 19 欄 · 12 類</span></div></div><div class="filters" style="margin-bottom:16px"><input id="vocabSearch" data-i18n-placeholder="vocab_search_placeholder" placeholder="搜尋詞條、注音、拼音、英文、例句或備註…"/><select id="topicFilter"><option value="all" data-i18n="topic_filter_all">所有分類</option></select></div><div class="vocab-list" id="vocabList"></div><div class="vocab-pagination" id="vocabPagination"></div><p class="muted tiny" data-i18n="vocab_source_note" style="margin-top:18px">詞庫資料來源：使用者提供的 Excel「台灣華語口說詞彙總表」。各詞條保留原始欄位與來源資訊。</p></section>
+<section class="view" id="view-practice"><div class="page-intro"><div><div class="eyebrow" data-i18n="practice_label">PRACTICE MAKES PROGRESS</div><h2 data-i18n="practice_title">快速測驗</h2><p data-i18n="practice_desc">用短短幾題，練習中文、拼音與英文意思的連結。</p></div><span class="tag" data-i18n="no_pressure">無壓力練習</span></div><div class="card quiz-config"><div><label for="quizLength"><b data-i18n="quiz_length_label">題數 Question count</b></label><select id="quizLength" class="field"><option value="5">5 題</option><option value="10" selected>10 題</option><option value="15">15 題</option><option value="20">20 題</option><option value="50">50 題</option><option value="100">100 題</option><option value="200">200 題</option><option value="300">300 題</option><option value="500">500 題</option><option value="1000">1,000 題</option><option value="2000">2,000 題</option><option value="2960">2,960 題（全部詞條）</option></select></div><div><label for="quizMode"><b data-i18n="quiz_mode_label">題型 Question type</b></label><select id="quizMode" class="field"><option value="mixed" data-i18n="quiz_mode_mixed">混合題型 Mixed</option><option value="en" data-i18n="quiz_mode_en">中文 → 英文 Chinese → English</option><option value="py" data-i18n="quiz_mode_py">中文 → 拼音 Chinese → Pinyin</option><option value="zh" data-i18n="quiz_mode_zh">英文 → 中文 English → Chinese</option></select></div><button class="btn btn-green" onclick="startConfiguredQuiz()"><span data-i18n="quiz_start_button">開始新測驗 Start quiz</span> ↗</button></div><div class="card quiz-card" id="quizCard"></div></section>
+<section class="view" id="view-review"><div class="page-intro"><div><div class="eyebrow" data-i18n="review_label">REVIEW & REMEMBER</div><h2 data-i18n="review_title">錯題與複習</h2><p data-i18n="review_desc">把不熟悉的單字再練一次，讓記憶慢慢穩固。</p></div><button class="btn btn-green" onclick="startQuiz(true)" data-i18n="practice_wrong">測驗待複習單字</button></div><div class="two-col"><div class="card"><div class="card-heading"><h3 data-i18n="review_list">待複習清單</h3><span class="tag" id="reviewCount">0</span></div><div id="reviewList"></div></div><div class="card"><div class="card-heading"><h3 data-i18n="review_method">怎麼複習最有效？</h3><span>✦</span></div><div class="word-row"><div class="stat-icon">①</div><div class="word-info"><b data-i18n="review_tip1_title">先回想，再看答案</b><small data-i18n="review_tip1">看到中文時，試著先說出意思或拼音。</small></div></div><div class="word-row"><div class="stat-icon">②</div><div class="word-info"><b data-i18n="review_tip2_title">大聲念出來</b><small data-i18n="review_tip2">留意聲調與自然語速，不必追求完美。</small></div></div><div class="word-row"><div class="stat-icon">③</div><div class="word-info"><b data-i18n="review_tip3_title">隔一段時間再練</b><small data-i18n="review_tip3">分散練習比一次塞進太多內容更有幫助。</small></div></div></div></div></section>
+<section class="view" id="view-progress"><div class="page-intro"><div><div class="eyebrow" data-i18n="progress_label">YOUR LEARNING JOURNEY</div><h2 data-i18n="progress_title">學習紀錄</h2><p data-i18n="progress_desc">看看你已經學會什麼，以及下一步可以練習什麼。</p></div><button class="btn btn-line" onclick="exportData()" data-i18n="export_data">匯出學習資料</button></div><div class="weekly-card card"><div class="card-heading"><h3 data-i18n="weekly_title">最近七天學習時間</h3><span class="pill" data-i18n="minutes_bilingual_label">分鐘</span></div><div id="weeklyChart" class="weekly-bars" aria-label="最近七天學習時間圖表"></div></div><div class="stats-grid"><div class="stat card"><div class="stat-top"><span data-i18n="stat_words">學過的單字</span><span class="stat-icon">▧</span></div><strong id="pWords">0</strong></div><div class="stat card"><div class="stat-top"><span data-i18n="stat_mastered">已熟悉</span><span class="stat-icon">✓</span></div><strong id="pMastered">0</strong></div><div class="stat card"><div class="stat-top"><span data-i18n="stat_accuracy">測驗正確率</span><span class="stat-icon">◎</span></div><strong id="pAccuracy">—</strong></div><div class="stat card"><div class="stat-top"><span data-i18n="total_quizzes">完成測驗</span><span class="stat-icon">▤</span></div><strong id="pQuizzes">0</strong></div></div><div class="two-col" style="margin-top:16px"><div class="card"><div class="card" style="padding:22px;margin-bottom:18px"><div class="card-heading"><h3 data-i18n="module_activity_title">其他學習模組</h3><span class="pill">1.0.2</span></div><div class="stats-grid" style="margin-top:16px"><div class="stat-card"><small data-i18n="module_reading">閱讀</small><strong id="extraReadingCount">0</strong></div><div class="stat-card"><small data-i18n="module_grammar">文法</small><strong id="extraGrammarCount">0</strong></div><div class="stat-card"><small data-i18n="module_listening">聽力</small><strong id="extraListeningCount">0</strong></div><div class="stat-card"><small data-i18n="module_exam">綜合測驗</small><strong id="extraExamCount">0</strong></div></div><p class="muted tiny" style="margin-top:12px"><span data-i18n="module_activity_desc">模組活動與學習紀錄都會一起匯出備份。</span></p></div><div class="card-heading"><h3 data-i18n="activity_title">最近的學習活動</h3><span class="muted tiny">RECENT</span></div><div id="activityList"></div></div><div class="card"><div class="card-heading"><h3 data-i18n="goal_settings">每日目標</h3><span>◎</span></div><p class="muted tiny" data-i18n="goal_settings_desc">設定一個容易持續的每日學習時間。</p><div class="setting-row"><div><b data-i18n="daily_minutes">每日分鐘數</b><small data-i18n="daily_minutes_sub">完成課程和測驗會累積時間</small></div><select id="goalSelect" class="field"><option value="5">5 分鐘</option><option value="10" selected>10 分鐘</option><option value="15">15 分鐘</option><option value="20">20 分鐘</option><option value="30">30 分鐘</option><option value="60">60 分鐘</option></select></div></div></div></section>
+<section class="view" id="view-settings"><div class="page-intro"><div><div class="eyebrow" data-i18n="settings_label">YOUR SPACE, YOUR PACE</div><h2 data-i18n="settings_title">設定與備份</h2><p data-i18n="settings_desc">調整介面、語音與學習偏好，並管理你的學習資料。</p></div></div>
+<div class="card" style="margin:0 0 16px"><div class="card-heading"><h3>本機資料備份 / Local backup</h3><span class="pill">JSON</span></div><p class="muted">匯出本系統的 localStorage 學習進度與設定；匯入會覆蓋相同名稱的系統資料。PDF／影音庫資料由 IndexedDB 管理，不包含在此 JSON 備份內。</p><div class="action-row"><button class="btn btn-green" id="fullBackupExport">匯出完整學習資料 / Export</button><button class="btn btn-line" id="fullBackupImport">匯入備份 / Import</button><input type="file" id="fullBackupFile" accept="application/json,.json" hidden></div><div id="backupStatus" class="feedback" aria-live="polite"></div></div>
+<div class="settings-grid"><div class="card"><div class="card-heading"><h3 data-i18n="general_settings">一般設定</h3><span>⚙</span></div><div class="setting-row"><div><b data-i18n="interface_language">介面語言</b><small data-i18n="interface_language_sub">學習內容仍以繁體中文與英文解釋為主</small></div><select id="settingsLanguage" class="field"><option value="zh">繁體中文</option><option value="en">English</option><option value="bi">中文 / English</option></select></div><div class="setting-row"><div><b data-i18n="appearance_label">外觀主題</b><small data-i18n="appearance_desc">切換明亮、深色或跟隨系統。</small></div><select id="themeSelect" class="field"><option value="light" data-i18n="theme_light">明亮 Light</option><option value="dark" data-i18n="theme_dark">深色 Dark</option><option value="system" data-i18n="theme_system">跟隨系統 System</option></select></div><div class="setting-row"><div><b data-i18n="speech_voice">語音發音</b><small data-i18n="speech_voice_sub">使用裝置提供的中文語音</small></div><select id="voiceSelect" class="field"><option value="auto" data-i18n="voice_auto">自動選擇台灣華語</option></select></div><p id="speechVoiceQualityNote" class="muted tiny voice-quality-note" data-i18n="voice_quality_note">優先使用台灣中文語音；如果裝置沒有提供，可能會改用其他中文語音，聲音品質與口音會不同。</p><div class="setting-row"><div><b data-i18n="speech_rate_label">例句播放速度</b><small data-i18n="speech_rate_desc">使用裝置內建語音合成；可調整播放速度。</small></div><select id="speechRateSelect" class="field"><option value="0.65" data-i18n="speech_rate_slow">慢速</option><option value="0.82" data-i18n="speech_rate_medium">學習速度</option><option value="0.95" data-i18n="speech_rate_natural">自然語速</option><option value="1.1" data-i18n="speech_rate_fast">快速</option></select></div><div class="setting-row"><div><b data-i18n="profile_name">學習者名稱</b><small data-i18n="profile_name_sub">只保存在這個瀏覽器中</small></div><input id="profileName" class="field" value="Learner" style="width:130px"></div><div class="setting-row"><div><b data-i18n="daily_minutes">每日分鐘數</b><small data-i18n="daily_minutes_sub">設定你想維持的學習目標</small></div><select id="settingsGoal" class="field"><option value="5">5 分鐘</option><option value="10">10 分鐘</option><option value="15">15 分鐘</option><option value="20">20 分鐘</option><option value="30">30 分鐘</option><option value="60">60 分鐘</option></select></div><div class="settings-actions"><button class="btn btn-green" onclick="saveSettings()" data-i18n="save_settings">儲存設定</button><button class="btn btn-line" onclick="testVoice()" data-i18n="test_voice">測試語音</button></div></div><div class="card"><div class="card-heading"><h3 data-i18n="data_management">資料管理</h3><span>↔</span></div><p class="muted tiny" style="line-height:1.7" data-i18n="data_desc">資料保存在此瀏覽器。建議定期匯出備份。匯入檔案會先檢查格式。</p><div class="setting-row"><div><b data-i18n="export_backup">匯出備份</b><small data-i18n="export_backup_sub">下載學習進度與設定的 JSON 檔</small></div><button class="btn btn-line" onclick="exportData()" data-i18n="export">匯出</button></div><div class="setting-row"><div><b data-i18n="import_backup">匯入備份</b><small data-i18n="import_backup_sub">從先前匯出的檔案還原資料</small></div><label class="btn btn-line" for="importFile" data-i18n="import">匯入</label><input id="importFile" type="file" accept="application/json,.json" class="hidden"></div><div class="setting-row"><div><b data-i18n="reset_progress">重設本程式資料</b><small data-i18n="reset_progress_sub">只會清除本程式專用的資料</small></div><button class="btn" style="background:#fff0ed;color:var(--red)" onclick="resetProgress()" data-i18n="reset">重設</button></div><div class="settings-actions"><span class="pill" data-i18n="local_only">本機儲存 · 不需帳號</span></div></div></div><div class="card extra-card audio-engine-panel" id="audioEnginePanel">
+  <div class="card-heading"><h3 data-i18n="audio_engine_title">語音系統 · 核心錄音庫</h3><span class="pill">1.8.2 Neural TTS</span></div>
+  <p class="muted tiny" data-i18n="audio_engine_desc" style="line-height:1.8">所有頁面的播放功能共用同一套音訊引擎。核心注音錄音優先；一般例句可連接安全的神經語音後端；沒有可用音訊時回退到本機語音。</p>
+  <div id="audioEngineStatus" class="audio-engine-status" role="status" aria-live="polite">正在檢查音訊支援…</div>
+  <div class="audio-engine-grid" style="margin-top:14px">
+    <div class="card" style="padding:16px;box-shadow:none">
+      <div class="card-heading"><h3 data-i18n="audio_neural_endpoint_title">神經語音後端（選填）</h3></div>
+      <p class="muted tiny" data-i18n="audio_neural_endpoint_desc" style="line-height:1.7">只有在你已部署安全的 TTS 後端時才填寫 URL。此欄不是 API 金鑰；請勿把雲端服務祕密金鑰放進 HTML。建議前後端同源開啟；雲端語音可能會依供應商方案計費。</p>
+      <label class="tiny" for="audioEndpointUrl" data-i18n="audio_endpoint_label">TTS endpoint URL</label>
+      <input id="audioEndpointUrl" class="audio-import-file" type="url" placeholder="https://your-domain.example/api/tts" autocomplete="off" spellcheck="false" style="margin-top:6px">
+      <div class="audio-import-actions"><button type="button" class="btn btn-green" id="saveAudioEndpoint" data-i18n="audio_endpoint_save">儲存端點</button><button type="button" class="btn btn-line" id="clearAudioEndpoint" data-i18n="audio_endpoint_clear">清除端點</button></div>
+      <div class="setting-row" style="margin-top:12px"><div><b data-i18n="audio_cloud_voice_label">雲端神經語音</b><small data-i18n="audio_cloud_voice_desc">檢查後端後，從服務端提供的台灣華語聲線中選擇。</small></div><select id="audioCloudVoice" class="field"><option value="" data-i18n="audio_cloud_voice_auto">使用後端預設</option></select></div>
+      <div class="audio-import-actions"><button type="button" class="btn btn-line" id="checkNeuralBackend" data-i18n="audio_backend_check">檢查語音服務</button><button type="button" class="btn btn-green" id="testNeuralVoice" data-i18n="audio_backend_test">試聽雲端語音</button></div>
+      <p id="neuralBackendStatus" class="muted tiny" role="status" aria-live="polite" data-i18n="audio_backend_not_checked">尚未檢查神經語音服務。</p>
+      <p class="core-audio-footnote" data-i18n="audio_endpoint_contract">後端需接受 POST JSON：text、locale（cmn-TW）、voiceId、rate；回傳 audio/mpeg 或 audio/wav。未設定時使用本機語音。</p>
+    </div>
+    <div class="card" style="padding:16px;box-shadow:none">
+      <div class="card-heading"><h3 data-i18n="audio_core_recordings_title">注音核心錄音</h3><span id="coreAudioCount" class="pill">0 / 37</span></div>
+      <p class="muted tiny" data-i18n="audio_core_recordings_desc" style="line-height:1.7">你可以下載教育部提供的注音符號音檔，解壓縮後選取音訊檔，再將檔案對應到符號。此 HTML 不會在未取得檔案前假裝已內含錄音。</p>
+      <p class="audio-source-attribution"><span data-i18n="audio_moe_attribution">官方來源：教育部《國語注音符號手冊》；官方頁面說明其中的相關音檔採 CC BY 4.0 授權。</span><br><a href="https://language.moe.gov.tw/001/Upload/files/site_content/M0001/juyin/" target="_blank" rel="noopener noreferrer" data-i18n="audio_moe_source_link">開啟教育部手冊與音檔下載頁</a> · <a href="https://language.moe.gov.tw/001/Upload/files/site_content/M0001/juyin/bopomofo_materials_20170213.zip" target="_blank" rel="noopener noreferrer" data-i18n="audio_moe_zip_link">下載注音素材 ZIP</a></p>
+      <label class="tiny" for="coreAudioFiles" data-i18n="audio_choose_files">選取已解壓縮的音訊檔（可多選）</label>
+      <input id="coreAudioFiles" class="audio-import-file" type="file" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac,.webm" multiple style="margin-top:6px">
+      <div class="setting-row" style="justify-content:flex-start;gap:9px"><input id="audioMoeLicenseConfirmed" type="checkbox" style="width:auto;max-width:none"><label for="audioMoeLicenseConfirmed" class="tiny" data-i18n="audio_moe_license_confirm">我確認選取的檔案來自教育部官方素材 ZIP，並會保留 CC BY 4.0 來源標示。</label></div>
+      <div id="coreAudioMapping" class="core-audio-map" aria-label="Core recording symbol mapping"></div>
+      <div class="core-audio-actions"><button type="button" class="btn btn-green" id="importCoreAudio" data-i18n="audio_import_mapped">匯入已對應錄音</button><button type="button" class="btn btn-line" id="refreshCoreAudio" data-i18n="audio_refresh_core">重新檢查錄音</button><button type="button" class="btn btn-line" id="stopAudioPlayback" data-i18n="audio_stop">停止播放</button><button type="button" class="btn btn-line" id="exportCoreAudioPack" data-i18n="audio_export_pack">下載錄音備份</button><label for="importCoreAudioPack" class="btn btn-line" data-i18n="audio_import_pack">匯入錄音備份</label><input type="file" id="importCoreAudioPack" accept="application/json,.json" class="hidden"></div>
+      <p class="core-audio-footnote" data-i18n="audio_core_note">音檔會存放在目前瀏覽器的 IndexedDB，不會改動 Excel 原始詞庫。若瀏覽器不支援持久儲存，重新開啟後可能需要重新匯入。</p>
+    </div>
+  </div>
+</div>
+<div class="card extra-card" id="stabilityCheckCard" style="margin-top:18px">
+  <div class="card-heading"><h3 data-i18n="health_title">系統自我檢查</h3><span class="pill">QA</span></div>
+  <p class="muted tiny" data-i18n="health_desc" style="line-height:1.7">檢查詞庫完整性、課程涵蓋、翻譯鍵、語言選單與導覽對應。此檢查不會刪除學習資料。</p>
+  <button class="btn btn-line" id="runStabilityCheck" type="button" data-i18n="health_run">執行系統檢查</button>
+  <div id="stabilityCheckSummary" class="health-check-summary" role="status" aria-live="polite" hidden></div>
+  <div id="stabilityCheckResults" class="health-check-results" aria-live="polite"></div>
+</div>
+<p class="muted tiny" style="margin-top:18px;line-height:1.8" data-i18n="privacy_note">隱私提示：此單檔程式的學習資料儲存在目前瀏覽器的專用儲存空間；清除瀏覽器資料前請先匯出備份。</p></section>
+
+<section class="view" id="view-reading">
+  <div class="page-intro"><div class="eyebrow" data-i18n="reading_label">閱讀練習</div><h2 data-i18n="reading_title">情境短文閱讀</h2><p class="muted" data-i18n="reading_desc">閱讀一段台灣日常生活短文，再回答理解題。每種練習共 300 題。</p></div>
+  <div class="card extra-card">
+    <span class="pill">BEGINNER · A1</span><h3 data-i18n="reading_story_title">在便利商店</h3>
+    <div class="reading-text"><p>今天早上，我去便利商店買早餐。我買了一個飯糰和一杯豆漿。店員問：「需要袋子嗎？」我說：「不用了，謝謝。」</p><p class="muted">Jīntiān zǎoshang, wǒ qù biànlì shāngdiàn mǎi zǎocān. Wǒ mǎi le yí ge fàntuán hé yì bēi dòujiāng. Diànyuán wèn: “Xūyào dàizi ma?” Wǒ shuō: “Bú yòng le, xièxie.”</p><p><b>English:</b> This morning, I went to a convenience store to buy breakfast. I bought a rice ball and a cup of soy milk. The clerk asked, “Do you need a bag?” I said, “No, thank you.”</p></div>
+    <div class="quiz-question"><b data-i18n="reading_feedback_q">第 1 題：說話者買了什麼？</b><div class="answer-grid"><button class="btn btn-line" onclick="checkExtra('reading','a')">A rice ball and soy milk</button><button class="btn btn-line" onclick="checkExtra('reading','b')">Coffee and bread</button><button class="btn btn-line" onclick="checkExtra('reading','c')">A train ticket</button></div><div id="readingFeedback" class="feedback" aria-live="polite"></div></div>
+  </div>
+</section>
+<section class="view" id="view-grammar">
+  <div class="page-intro"><div class="eyebrow" data-i18n="grammar_label">文法練習</div><h2 data-i18n="grammar_title">華語句型</h2><p class="muted" data-i18n="grammar_desc">先理解句子的用途，再練習在生活中使用。</p></div>
+  <div class="card extra-card"><span class="pill">PATTERN 01</span><h3>想要 + noun / 想要 + verb</h3><p data-i18n="grammar_explanation_want">用「想要」表達想要某樣東西或想做某件事。</p><p class="reading-text"><b>我想要一杯水。</b><br><span class="muted">Wǒ xiǎng yào yì bēi shuǐ.</span><br>I would like a cup of water.</p><p class="reading-text"><b>我想要買票。</b><br><span class="muted">Wǒ xiǎng yào mǎi piào.</span><br>I want to buy a ticket.</p>
+  <div class="quiz-question"><b data-i18n="grammar_q">「我想要茶」的語序是否自然？</b><div class="answer-grid"><button class="btn btn-line" onclick="checkExtra('grammar','a')">我茶想要。</button><button class="btn btn-line" onclick="checkExtra('grammar','b')">我想要茶。</button><button class="btn btn-line" onclick="checkExtra('grammar','c')">想我茶要。</button></div><div id="grammarFeedback" class="feedback" aria-live="polite"></div></div></div>
+  <div class="card extra-card"><span class="pill">PATTERN 02</span><h3>可以 + verb + 嗎？</h3><p data-i18n="grammar_explanation_can">用來禮貌詢問是否可以做某事。</p><p class="reading-text"><b>可以刷卡嗎？</b> <span class="muted">Kěyǐ shuā kǎ ma?</span><br>Can I pay by card?</p><p class="reading-text"><b>可以再說一次嗎？</b> <span class="muted">Kěyǐ zài shuō yí cì ma?</span><br>Could you say that again?</p></div>
+</section>
+<section class="view" id="view-listening">
+  <div class="page-intro"><div class="eyebrow" data-i18n="listening_label">聽力練習</div><h2 data-i18n="listening_title">聽懂生活華語</h2><p class="muted" data-i18n="listening_desc">播放一句華語，然後選出你聽到的內容。</p></div>
+  <div class="card extra-card"><span class="pill">LISTEN & CHOOSE</span><h3>Listen to the sentence</h3><div class="audio-prompt"><div class="audio-icon">♫</div><div><b data-i18n="listening_prompt">準備好了嗎？</b><small data-i18n="listening_prompt_desc">先播放，再聆聽並選出正確意思。</small></div></div><button class="btn btn-green" onclick="playListening()"><span data-i18n="listening_play">播放華語</span></button><button class="btn btn-line" onclick="toggleListeningHint()"><span data-i18n="listening_hint">顯示文字提示</span></button><div id="listeningHint" class="reading-text" hidden><b>請問，捷運站在哪裡？</b><br><span class="muted">Qǐngwèn, jiéyùn zhàn zài nǎlǐ?</span><br>Excuse me, where is the MRT station?</div><div class="quiz-question"><b data-i18n="listening_q">這句話是什麼意思？</b><div class="answer-grid"><button class="btn btn-line" onclick="checkExtra('listening','a')">Where is the MRT station?</button><button class="btn btn-line" onclick="checkExtra('listening','b')">How much is this?</button><button class="btn btn-line" onclick="checkExtra('listening','c')">I would like some water.</button></div><div id="listeningFeedback" class="feedback" aria-live="polite"></div></div></div>
+</section>
+<section class="view" id="view-speaking">
+  <div class="page-intro"><div class="eyebrow" data-i18n="speaking_label">口說練習</div><h2 data-i18n="speaking_title">跟讀與口說</h2><p class="muted" data-i18n="speaking_desc">先聽範例，再跟讀。</p></div>
+  <div class="card extra-card"><span class="pill">SPEAK ALOUD</span><h3 data-i18n="speaking_sample">請問，這個多少錢？</h3><p class="muted">Qǐngwèn, zhège duōshǎo qián?</p><p>Excuse me, how much is this?</p><button class="btn btn-green" onclick="speakMandarin('請問，這個多少錢？')">🔊 <span data-i18n="speaking_listen">聽範例</span></button><button class="btn btn-line" onclick="startSpeechCheck()">🎙 <span data-i18n="speaking_try">試著說</span></button><div id="speechFeedback" class="feedback" aria-live="polite" data-i18n="speaking_initial">若瀏覽器不支援語音辨識，請自行跟讀並比較發音。</div></div>
+  <div class="card extra-card" id="dailyConversationLab" style="margin-top:16px">
+   <div class="card-heading"><div><span class="pill">DAILY CONVERSATION</span><h3 style="margin-top:10px">日常情境對話 / Daily conversations</h3></div><span class="tag" id="dialogueProgress">1 / 6</span></div>
+   <p class="muted">選擇情境，聽標準句，再用麥克風跟讀。辨識結果只能比較文字，不等於聲調或口音評分。</p>
+   <label for="dialogueScenario">情境 / Situation</label><select id="dialogueScenario" class="field" style="width:100%;margin:8px 0 14px">
+    <option value="market">購物 Shopping</option><option value="food">餐廳 Restaurant</option><option value="transport">交通 Transportation</option><option value="cafe">咖啡店 Café</option><option value="help">尋求協助 Asking for help</option><option value="social">日常社交 Small talk</option>
+   </select>
+   <div class="two-col" style="align-items:stretch"><div class="card" style="padding:18px;margin:0"><div class="eyebrow">YOU CAN SAY</div><h3 id="dialogueTarget" style="font-size:1.35rem;line-height:1.6">請問，這個多少錢？</h3><p class="muted" id="dialoguePinyin">Qǐngwèn, zhège duōshǎo qián?</p><p id="dialogueEnglish">Excuse me, how much is this?</p><div class="action-row"><button class="btn btn-green" id="dialogueListen">🔊 聽句子 / Listen</button><button class="btn btn-line" id="dialogueSpeak">🎙 跟讀辨識 / Speak</button></div></div>
+   <div class="card" style="padding:18px;margin:0"><div class="eyebrow">YOUR PRACTICE</div><p id="dialoguePrompt" style="line-height:1.7">先聽一次，再清楚地說出整句。</p><div id="dialogueResult" class="feedback" aria-live="polite">尚未開始 / Not started</div><div class="action-row"><button class="btn btn-line" id="dialoguePrev">← 上一句 / Previous</button><button class="btn btn-green" id="dialogueNext">下一句 / Next →</button></div></div></div>
+   <p class="muted tiny">隱私提醒：瀏覽器語音辨識在部分環境會使用線上服務；請勿在不願上傳語音的情況下啟用。單一 HTML 的其他學習功能可離線使用，但語音辨識不保證離線。</p>
+  </div>
+ </section>
+<section class="view" id="view-strokeorder">
+  <div class="page-intro"><div class="eyebrow">STROKE ORDER · 筆順練習</div><h2>國字筆順與寫字練習</h2><p class="muted">查詢繁體中文字的標準筆順。教育部筆順動畫需連接網路。</p></div>
+  <div class="card extra-card" id="strokeOrderPractice">
+    <span class="pill">國字筆順 · STROKE ORDER</span>
+    <h3>國字筆順與寫字練習（已整合）</h3>
+    <p class="muted">輸入一個繁體中文字，即可在下方查看教育部筆順動畫。動畫需要網路連線。</p>
+    <div class="stroke-search-row">
+      <input id="strokeCharacterInput" class="writing-input" value="謝" maxlength="8" aria-label="輸入要查詢的中文字" placeholder="輸入中文字，例如：謝謝">
+      <button class="btn btn-green" id="strokeSearchBtn" type="button">查詢筆順</button>
+      <button class="btn btn-line" id="strokeClearBtn" type="button">清除</button>
+    </div>
+    <div id="strokeOrderStatus" class="stroke-status" aria-live="polite">教育部筆順動畫需要網路連線。</div>
+    <div class="stroke-tools">
+      <div class="stroke-panel">
+        <h4>教育部筆順動畫</h4>
+        <div class="stroke-frame-wrap" id="strokeFrameWrap">
+          <div id="strokeFramePlaceholder" style="height:100%;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;color:#666">輸入中文字後，這裡會載入對應的教育部筆順動畫。</div>
+          <iframe id="strokeOrderFrame" title="教育部國字標準字體筆順動畫" hidden loading="eager" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen" allowfullscreen></iframe>
+        </div>
+        <p class="stroke-small" id="strokeFrameHelp">若動畫沒有顯示，請使用下方按鈕直接開啟目前中文字的教育部動畫。</p>
+        <div class="action-row">
+          <button class="btn btn-green" id="strokeOpenCharBtn" type="button">直接開啟目前中文字動畫 ↗</button>
+          <button class="btn btn-line" id="strokeOpenSiteBtn" type="button">開啟教育部國字查詢 ↗</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+<section class="view" id="view-writing">
+  <div class="page-intro"><div class="eyebrow" data-i18n="writing_label">寫作練習</div><h2 data-i18n="writing_title">把英文變成華語</h2><p class="muted" data-i18n="writing_desc">先從可立即使用的短句開始，再慢慢練習自行造句。</p></div>
+  <div class="card extra-card"><span class="pill">SENTENCE BUILDER</span><h3 data-i18n="writing_task">請把下面的英文翻譯成繁體中文。</h3><p class="reading-text"><b>I would like a cup of water.</b><br><span class="muted">Hint: 我 / 想要 / 一杯水</span></p><label for="writingAnswer" data-i18n="writing_answer">你的答案</label><input id="writingAnswer" class="writing-input" data-i18n-placeholder="writing_placeholder" placeholder="請輸入繁體中文…" autocomplete="off"><div class="action-row"><button class="btn btn-green" onclick="checkWriting()"><span data-i18n="writing_check">檢查答案</span></button><button class="btn btn-line" onclick="$('writingAnswer').value='我想要一杯水。'"><span data-i18n="writing_example">顯示範例</span></button></div><div id="writingFeedback" class="feedback" aria-live="polite"></div></div>
+
+
+</section>
+<section class="view" id="view-tutor">
+  <div class="page-intro"><div class="eyebrow">PERSONALIZED PRACTICE · AI LANGUAGE COACH</div><h2><span data-i18n="tutor_heading">AI 華語家教</span></h2><p class="muted" data-i18n="tutor_description">用自然的方式提問、練習台灣華語，請 AI 解釋文法、修正文句並提供生活例句。Ask questions, practise Mandarin, and get explanations and corrections.</p></div>
+  <div class="ai-safety"><strong data-i18n="tutor_privacy_title">分享網站前請注意 · 隱私與 API 金鑰</strong><p data-i18n="tutor_privacy_desc">此公開網頁不會提供共用金鑰。每位使用者都必須自行輸入自己的 Gemini API 金鑰；金鑰只暫存在目前頁面的記憶體中，不會寫入網站儲存空間，但瀏覽器端金鑰仍可能被使用者自己的瀏覽器工具看到。請勿在公用電腦輸入金鑰。正式公開服務建議改用安全後端。</p></div>
+  <div class="card extra-card ai-layout">
+    <div><div class="card-heading"><h3 data-i18n="tutor_connection">連線設定</h3><span class="pill">Gemini API</span></div>
+      <div class="ai-config">
+        <label class="wide" for="tutorApiKey"><span data-i18n="tutor_api_key_label">自己的 Gemini API 金鑰</span><input id="tutorApiKey" class="field ai-key" type="password" autocomplete="off" spellcheck="false" placeholder="貼上金鑰後按「暫存」 · Paste key, then set temporarily"></label>
+        <div class="ai-actions wide"><button class="btn btn-green" id="tutorSetKey" type="button" data-i18n="tutor_set_key">暫存金鑰 · Set key</button><button class="btn btn-line" id="tutorClearKey" type="button" data-i18n="tutor_clear_key">清除金鑰 · Clear key</button></div>
+        <label for="tutorModel"><span data-i18n="tutor_model">模型名稱</span><input id="tutorModel" class="field" value="gemini-2.5-flash" spellcheck="false"></label>
+        <label for="tutorLevel"><span data-i18n="tutor_level">學習程度</span><select id="tutorLevel" class="field"><option value="beginner">初級 Beginner</option><option value="intermediate">中級 Intermediate</option><option value="advanced">進階 Advanced</option></select></label>
+      </div>
+      <p id="tutorStatus" class="ai-status" data-i18n="tutor_status_initial" role="status" aria-live="polite">尚未設定金鑰。</p>
+    </div>
+    <div><div class="card-heading"><h3 data-i18n="tutor_chat_heading">開始對話</h3></div>
+      <div id="tutorLog" class="ai-chat-log" aria-live="polite"><div class="ai-message assistant">你好！我是你的台灣華語練習家教。你可以問我詞彙、拼音、聲調、文法，或請我修正你寫的句子。
+
+Hi! Ask me about vocabulary, pinyin, tones, grammar, or sentence corrections.</div></div>
+      <label for="tutorPrompt" data-i18n="tutor_prompt_label">你的問題</label><textarea id="tutorPrompt" class="field" rows="4" data-i18n-placeholder="tutor_prompt_placeholder" placeholder="例如：我想喝珍珠奶茶自然嗎？請解釋「想」和「要」的差別。"></textarea>
+      <div class="ai-actions"><button class="btn btn-green" id="tutorSend" type="button" data-i18n="tutor_send">送出問題 · Ask tutor</button><button class="btn btn-line" id="tutorClearChat" type="button" data-i18n="tutor_clear_chat">清除對話 · Clear chat</button></div>
+      <p class="muted tiny" data-i18n="tutor_privacy_note">提示：請勿輸入密碼、個人敏感資料或其他不希望傳送給 AI 服務的內容。對話不會儲存在本學習網站中。</p>
+    </div>
+  </div>
+</section>
+<section class="view" id="view-exam">
+  <div class="page-intro"><div class="eyebrow" data-i18n="exam_label">學習檢核</div><h2 data-i18n="exam_title">初級綜合測驗</h2><p class="muted" data-i18n="exam_desc">涵蓋詞彙、句型、閱讀與生活情境。</p></div>
+  <div class="card extra-card"><div class="card-heading"><h3 data-i18n="exam_card_title">五題綜合測驗</h3><span class="pill">A1 Beginner</span></div><p class="muted"><span data-i18n="exam_card_desc">每次開始會產生一組題目。完成後會保存分數與日期。</span></p><div id="examArea"><button class="btn btn-green" onclick="startExtraExam()"><span data-i18n="exam_start">開始綜合測驗</span></button></div></div>
+</section>
+<section class="view" id="view-flashcards">
+  <div class="page-intro"><div><div class="eyebrow" data-i18n="flashcards_label">間隔複習 · 記憶訓練</div><h2 data-i18n="flashcards_title">記憶字卡</h2><p data-i18n="flashcards_desc">先回想答案，再翻開卡片。</p></div><span class="tag" id="flashDueBadge" data-i18n="flash_due_badge">今日待複習</span></div>
+  <div class="card flash-tools"><label for="flashMode"><b data-i18n="flash_range">卡片範圍</b><select id="flashMode" class="field"><option value="daily" selected>今日學習計畫（最多 20 詞）</option><option value="all" data-i18n="flash_all">全部單字</option><option value="due" data-i18n="flash_due">今日待複習</option><option value="favorites" data-i18n="flash_favorites">我的最愛</option><option value="unseen" data-i18n="flash_unseen">還沒學過</option><option value="wrong" data-i18n="flash_wrong">曾答錯／待加強</option></select></label><button class="btn btn-line" onclick="startFlashcards()"><span data-i18n="flash_shuffle">重新洗牌</span> ↻</button></div>
+  <div class="card flash-card-wrap" id="flashCard"><div class="empty" data-i18n="flash_loading">準備載入字卡…</div></div>
+  <p class="muted tiny flash-note" data-i18n="flash_note">記憶排程只存在這個瀏覽器。答對一次不代表完全精通，請搭配實際聽說使用。</p>
+</section>
+
+<section class="view" id="view-materials">
+  <div class="integrated-materials-app">
+<div class="materials-layout">
+<div class="materials-heading"><span class="pill" id="bootStatus">正在準備內建教材…</span></div>
+<div class="browser-shell"><nav aria-label="主分頁"><button class="active" data-material-page="reader">📖 PDF 閱讀器</button><button data-material-page="video">🎧 影片播放器</button><button data-material-page="library">🗂️ 教材書庫</button></nav></div>
+<section class="page active" id="page-reader">
+ <div class="hero"><div class="kicker">PDF READING ROOM</div><h2>📖 注音符號手冊</h2><p>使用 PDF.js 顯示頁面，可切換頁碼、縮放、搜尋本文，也能匯入其他 PDF。內建手冊會在首次開啟時存入瀏覽器資料庫。</p></div>
+ <div class="grid">
+  <section class="panel">
+   <div class="pdf-toolbar">
+    <button id="prevPage">← 上一頁</button><label>頁碼 <input id="pageNumber" type="number" min="1" value="1"></label><span id="pageCount" class="muted">/ —</span><button id="nextPage">下一頁 →</button>
+    <button id="zoomOut">−</button><span id="zoomLabel" class="muted">100%</span><button id="zoomIn">＋</button><button id="fitWidth">符合寬度</button>
+   </div>
+   <div class="toolbar"><input id="pdfSearch" type="search" placeholder="搜尋本文中的字詞（例如：tone）"><button class="primary" id="searchBtn">搜尋</button><button id="searchPrev">上一個</button><button id="searchNext">下一個</button><button id="openPdfFallback">瀏覽器開啟</button></div>
+   <div id="pdfStage" class="pdf-stage"><div class="muted">正在載入 PDF 閱讀器…</div></div>
+   <div id="pdfStatus" class="status" role="status">準備載入內建 PDF。</div>
+  </section>
+  <aside class="stack">
+   <section class="panel"><h3>📚 電子書架</h3><p class="muted">選擇已儲存的 PDF，或匯入你自己的手冊。</p><div class="toolbar"><button class="primary" id="importPdfBtn">＋ 匯入 PDF</button><input id="pdfFileInput" type="file" accept="application/pdf,.pdf" multiple hidden></div><div id="pdfShelf" class="book-list"></div><div id="pdfImportStatus" class="status">內建手冊首次初始化中。</div></section>
+   <section class="panel"><h3>閱讀小提示</h3><ul class="note-list"><li>用上一頁、下一頁或直接輸入頁碼跳轉。</li><li>縮放按鈕可調整頁面大小；「符合寬度」會配合閱讀區。</li><li>搜尋結果會跳至含有關鍵字的頁面。</li><li>若 PDF.js CDN 無法連線，可改用瀏覽器內建 PDF 檢視器。</li></ul></section>
+  </aside>
+ </div>
+</section>
+<section class="page" id="page-video">
+ <div class="hero"><div class="kicker">TONE & LISTENING CENTER</div><h2>🎧 四聲與韻母練習</h2><p>內建聲調練習影片。可調整播放速度、循環播放，亦可加入電腦或手機中的其他影音檔，並保存在本機影音書庫。</p></div>
+ <div class="grid">
+  <section class="panel">
+   <h3>▶ 目前播放</h3><p id="videoMeta" class="muted">內建影片</p>
+   <div class="video-stage" id="videoStage"><div class="video-placeholder"><span>🎬</span><strong>準備載入聲調練習影片</strong><small>影片資料會在首次開啟時存入本機資料庫。</small></div></div>
+   <div class="toolbar"><button id="videoPrev">⏮ 上一部</button><button id="videoNext">下一部 ⏭</button><label for="videoSpeed">播放速度</label><select id="videoSpeed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select><label><input type="checkbox" id="videoLoop"> 單曲循環</label></div>
+   <div class="toolbar"><button id="videoRestart">↻ 從頭播放</button><button id="videoOpenSource">另開影片檔</button><button id="videoDownload">↓ 下載影片</button><button id="videoStop">■ 停止</button></div>
+   <div id="videoStatus" class="status" role="status">內建影片正在初始化。</div>
+  </section>
+  <aside class="stack">
+   <section class="panel"><h3>🎞️ 影片清單</h3><p class="muted">選擇影片即可播放。</p><div class="toolbar"><button class="primary" id="importVideoBtn">＋ 匯入影音檔</button><input id="videoFileInput" type="file" accept="video/*,audio/*,.mp4,.m4v,.webm,.mov,.mp3,.wav,.m4a,.ogg" multiple hidden></div><div id="videoShelf" class="video-list"></div><div id="videoImportStatus" class="status">準備就緒。</div></section>
+   <section class="panel"><h3>📝 建議練習方式</h3><ol class="note-list"><li>先完整看一次，了解影片安排的四聲與韻母練習。</li><li>再以 0.5× 或 0.75× 慢速播放，聽清楚後跟讀。</li><li>每次聽到一組發音，先模仿，再暫停自行重複。</li><li>最後回到 1× 速度，確認能自然跟上。</li></ol></section>
+  </aside>
+ </div>
+</section>
+<section class="page" id="page-library">
+ <div class="hero"><div class="kicker">LOCAL MATERIALS LIBRARY</div><h2>🗂️ 教材書庫</h2><p>PDF 與影音分開管理，檔案內容保存在這個瀏覽器的 IndexedDB。本頁提供書庫摘要及匯入方式；若清除瀏覽器網站資料，已儲存檔案也可能被清除。</p></div>
+ <div class="two-col"><section class="panel"><h3>📖 PDF 電子書</h3><div class="stat"><strong id="libraryPdfCount">0</strong><span>本已保存 PDF</span></div><p class="muted">可從 PDF 閱讀器分頁匯入、開啟或刪除。</p><button class="primary" id="goReader">前往 PDF 閱讀器</button></section><section class="panel"><h3>🎬 影音檔案</h3><div class="stat"><strong id="libraryVideoCount">0</strong><span>個已保存影音檔</span></div><p class="muted">可從影片播放器分頁匯入、播放或刪除。</p><button class="primary" id="goVideo">前往影片播放器</button></section></div>
+ <section class="panel" style="margin-top:16px"><h3>📦 備份與資料說明</h3><p class="muted">檔案存在瀏覽器的本機資料庫，不會上傳到伺服器。請保留原始 PDF 與影片作為備份。這個 HTML 內含兩個初始教材，因此檔案本身較大；PDF.js 程式庫需要網路連線，若無法載入，可使用瀏覽器備用檢視器。</p><div class="toolbar"><button id="refreshAll">重新整理書庫</button><button id="exportManifest">匯出書庫清單 JSON</button></div><div id="libraryStatus" class="status">尚未更新。</div></section>
+</section>
+<p class="foot">單一 HTML 檔案｜教材首次載入後儲存在瀏覽器本機｜建議使用最新版 Chrome 或 Edge</p>
+</div>
+
+
+</div>
+  <p class="muted tiny" style="margin-top:10px">首次開啟會載入內建教材，檔案較大，請稍候。PDF 畫布閱讀需要網路載入 PDF.js；若無法載入，仍可嘗試瀏覽器 PDF 備援檢視。</p>
+</section>
+</main></div><nav class="mobile-nav" id="mobileNav"><button class="active" data-page="home"><span>⌂</span><b data-i18n="nav_home">首頁</b></button><button data-page="lesson"><span>▤</span><b data-i18n="nav_lesson">課程</b></button><button data-page="curriculum"><span>▦</span><b data-i18n="curriculum_title">地圖</b></button><button data-page="learning"><span>◷</span><b data-i18n="learning_title">個人化學習</b></button><button data-page="vocab"><span>▧</span><b data-i18n="nav_vocab">單字</b></button><button data-page="flashcards"><span>▰</span><b data-i18n="menu_flashcards">記憶字卡 · Flashcards</b></button><button data-page="practice"><span>◉</span><b data-i18n="nav_practice">測驗</b></button><button data-page="settings"><span>⚙</span><b data-i18n="nav_settings">設定</b></button><button data-page="materials"><span>▣</span><span>教材</span></button></nav><div class="toast" id="toast"></div>
+
+
+<script src="./js/modules/embedded-assets.js"></script>
+<script src="./js/modules/materials.js"></script>
+<script src="./js/data/vocabulary.js"></script>
+<script src="./js/app.js"></script><script src="./js/data/moe-zhuyin-audio.js"></script>
+<script src="./js/modules/moe-zhuyin-audio.js"></script>
+
+<script src="./js/modules/i18n-patch.js"></script>
+<script src="./js/modules/speaking-practice.js"></script>
+
+<script src="./js/data/stroke-order-ids.js"></script>
+<script src="./js/data/stroke-order-png-01.js"></script>
+<script src="./js/data/stroke-order-png-02.js"></script>
+<script src="./js/data/stroke-order-png-03.js"></script>
+<script src="./js/data/stroke-order-png-04.js"></script>
+<script src="./js/data/stroke-order-png-05.js"></script>
+<script src="./js/data/stroke-order-png-06.js"></script>
+<script src="./js/data/stroke-order-png-07.js"></script>
+
+<script src="./js/modules/stroke-order.js"></script>
+
+</body></html>
